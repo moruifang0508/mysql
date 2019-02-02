@@ -1,0 +1,38 @@
+一、 安装
+- sudo apt-get install mysql-server
+- 期间会输入root 密码 ，可以设置为：admin
+- 如果安装过程中，没有设置密码，那么运行如下命令：
+- mysql> GRANT ALL PRIVILEGES ON *.* TO root@localhost IDENTIFIED BY "admin"
+- sudo apt-get install mysql-client
+- sudo apt-get install libmysqlclient-dev
+- sudo netstat -tap | grep mysql
+- 通过上述命令检查之后，如果看到有mysql 的socket处于 listen 状态则表示安装成功。
+
+二、进入mysql
+- 使用前需要先进入mysql:
+- mysql -u root -p
+-输入密码后即可，一般为admin
+
+三、显示
+- 显示数据库：
+- show databases;
+- 显示表格:
+- show tabels;
+  
+四、创建、删除和操作
+- 创建数据库  create database labelattr2;
+- 删除数据库 drop database labelattr2;
+- 使用数据库 use labelattr2;
+- 创建表 create table ()：
+- create table img_label ( Id int(11) unsigned primary key not null auto_increment, image_name varchar(255), 
+data_source varchar(255), color tinyint(1), direction tinyint(1) );
+- create table user_label ( Id int(11) unsigned primary key not null auto_increment,
+                                                userid int(11) unsigned not null default 0,
+imgid int(11) unsigned not null default 0,
+attr varchar(255),
+label_time datetime,
+label_value varchar(255));
+- create table users ( Id int(11) not null auto_increment,
+username varchar(255) not null,
+passwd varchar(255) null default '000000',
+primary key (Id,username));
