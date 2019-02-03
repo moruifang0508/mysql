@@ -14,7 +14,7 @@ exit
 1. 打开第一个配置文件：
 sudo vim /etc/mysql/my.cnf;
 在[mysql]在标签的下一行添加：
-default--character-set=utf8
+default-character-set=utf8
 保存退出。
 2.打开第二个配置文件：
 sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf 
