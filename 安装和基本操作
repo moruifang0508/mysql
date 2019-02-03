@@ -23,7 +23,13 @@
 - 创建数据库  create database labelattr2;
 - 删除数据库 drop database labelattr2;
 - 使用数据库 use labelattr2;
-- 创建表 create table ()：
+
+五、创建表
+-创建表前，需要先创建数据库，然后先使用该数据库，如果数据库已存在，可直接使用：
+-use labelattr2;
+-然后在该数据库中创建表，格式为： 
+create table ()：
+如：
 - create table img_label ( Id int(11) unsigned primary key not null auto_increment, image_name varchar(255), 
 data_source varchar(255), color tinyint(1), direction tinyint(1) );
 - create table user_label ( Id int(11) unsigned primary key not null auto_increment,
@@ -36,3 +42,23 @@ label_value varchar(255));
 username varchar(255) not null,
 passwd varchar(255) null default '000000',
 primary key (Id,username));
+
+六、从已有数据库创建新的数据库
+该方法將已有数据库的所有表的格式及其内容全部复制到新的数据库中。
+1.如果某文件clone_database.sh里有如下内容:
+echo "create database newDB" | mysql -u root --password=admin #创建新的数据库
+那么可以在shell命令中输入如下命令创建新的数据库newDB:
+sh clone_database.sh
+当然也可以自己进入mysql下创建数据库newDB：
+mysql -u root -p
+输入密码：admin
+create database newDB;
+exit #一定要先退出mysql
+
+2.在shell命令下將已有数据库labelattr2中的所有表的格式及其内容都复制到newDB中：
+mysqldump -u root --password=admin labelattr2 | mysql -u root --password=admin newDB
+
+七、清除表中的内容
+delete from table1;
+其他操作如：
+select * from table1 where make is null/not null
