@@ -42,6 +42,16 @@ label_value varchar(255));
 username varchar(255) not null,
 passwd varchar(255) null default '000000',
 primary key (Id,username));
+- desc img_label; #显示数据表的结构
+- select distinct make,id from img_label; #访问列名make,id,并去重
+- select count(distinct name) from img_label; #统计列名name中去重后的数目
+- select count(color) from img_label where color=1; #统计color=1的共有多少个
+- select * from img_label limit 2; #显示前两条记录
+插入：
+- insert into img_label(image_name, data_source) values (imgname,data_source),(imgname,data_source),...;
+修改表结构的列名：
+alter table tablename
+
 
 六、从已有数据库创建新的数据库
 该方法將已有数据库的所有表的格式及其内容全部复制到新的数据库中。
