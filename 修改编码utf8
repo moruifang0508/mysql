@@ -1,0 +1,29 @@
+使apt-get命令安装mysql，默认不是utf8,需要手动將编码改成utf8.
+
+
+一、 查看mysql编码：
+1.先进入mysql：
+mysql -u root -p
+2.查看编码方式：
+show variables like '%character%';
+3.退出mysql：
+exit
+
+
+二、 修改配置文件：
+1. 打开第一个配置文件：
+sudo vim /etc/mysql/my.cnf;
+在[mysql]在标签的下一行添加：
+default--character-set=utf8
+保存退出。
+2.打开第二个配置文件：
+sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf 
+在[mysqld]标签的下一行添加：
+character-set-server=utf8
+
+3.重启mysql服务：
+sudo service mysql restart
+
+4.可以重新进入mysql查看是否设置成功。
+
+
